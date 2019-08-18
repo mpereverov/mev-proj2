@@ -5,7 +5,7 @@ pipeline {
 			steps {
 				withCredentials([
 					sshUserPrivateKey(credentialsId: 'aws_id_key', keyFileVariable: 'aws_KEY', 
-						passphraseVariable: 'aws_PASSPHRASE', usernameVariable: 'aws_USERNAME'), 
+						usernameVariable: 'aws_USERNAME'), 
 					usernamePassword(credentialsId: 'dockeruser', passwordVariable: 'docker_PASSWORD', 
 						usernameVariable: 'docker_USERNAME')]) {
 
@@ -17,7 +17,6 @@ pipeline {
 			    		docker_USERNAME=$docker_USERNAME \
 			    		docker_PASSWORD=$docker_PASSWORD \
 			    		aws_KEY=$aws_KEY \
-#			    		aws_PASSPHRASE=$aws_PASSPHRASE \
 			    		aws_USERNAME=$aws_USERNAME \
 		    		"
 	    		}
