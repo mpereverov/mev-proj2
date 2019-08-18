@@ -1,15 +1,15 @@
 ---
 
+- name: Log into DockerHub
+  docker_login:
+    username: "{{ docker_USERNAME }}"
+    password: "{{ docker_PASSWORD }}"
+
 - name: Create component dir
   file: 
     path: "{{ component_DIR }}"
     state: directory
     recurse: yes
-
-- name: Log into DockerHub
-  docker_login:
-    username: "{{ docker_USER }}"
-    password: "{{ docker_PASS }}"
 
 - name: Generate docker-compose file
   template:
