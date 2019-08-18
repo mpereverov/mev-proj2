@@ -8,20 +8,20 @@ pipeline {
 						passphraseVariable: 'aws_PASSPHRASE', usernameVariable: 'aws_USERNAME'), 
 					usernamePassword(credentialsId: 'dockeruser', passwordVariable: 'docker_PASSWORD', 
 						usernameVariable: 'docker_USERNAME')]) {
-			    	properties([
-			    		parameters([
-					    	string(name: 'component_NAME', value: 'api'),
-					    	string(name: 'project_NAME', value: 'app'),
-					    	string(name: 'PORTS', value: '4004:4004'),
-					    	string(name: 'network_NAME', value: 'mev'),
-					    	string(name: 'docker_USERNAME', value: '$docker_USERNAME'),
-					    	string(name: 'docker_PASSWORD', value: '$docker_PASSWORD')
-			    		])
-			    	]) 
-		    		sh "ansible-playbook deploy.yml"
+
+		    		sh "ansible-playbook deploy.yml -e \
+			    		component_NAME=api \
+			    		project_NAME=app \
+			    		PORTS=4004:4004 \
+			    		network_NAME=mev \
+			    		docker_USERNAME=$docker_USERNAME \
+			    		docker_PASSWORD=$docker_PASSWORD \
+			    		aws_KEY=$aws_KEY \
+			    		aws_PASSPHRASE=$aws_PASSPHRASE \
+			    		aws_USERNAME=$aws_USERNAME \
+		    		"
 	    		}
 	    	}
-				
 		}
 	}
 }
