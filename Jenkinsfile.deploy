@@ -3,7 +3,23 @@ pipeline {
 	stages {
 		stage ('Deploy') {
 			steps {
-				sh "ansible-playbook deploy.yml"
+				withCredentials([
+					sshUserPrivateKey(credentialsId: 'aws_id_key', keyFileVariable: 'aws_KEY', 
+						passphraseVariable: 'aws_PASSPHRASE', usernameVariable: 'aws_USERNAME'), 
+					usernamePassword(credentialsId: 'dockeruser', passwordVariable: 'docker_PASSWORD', 
+						usernameVariable: 'docker_USERNAME')]) {
+			    	parameters: [
+				    	string(name: 'component_NAME', value: 'api'),
+				    	string(name: 'project_NAME', value: 'app'),
+				    	string(name: 'PORTS', value: '4004:4004'),
+				    	string(name: 'network_NAME', value: 'mev'),
+				    	string(name: 'docker_USERNAME', value: '$docker_USERNAME'),
+				    	string(name: 'docker_PASSWORD', value: '$docker_PASSWORD')
+			    	], 
+		    		sh "ansible-playbook deploy.yml"
+	    		}
+	    	}
+				
 			}
 		}
 	}
