@@ -1,0 +1,26 @@
+---
+
+- name: Create component dir
+  file: 
+    path: "{{ component_DIR }}"
+    state: directory
+    recurse: yes
+
+- name: Log into DockerHub
+  docker_login:
+    username: "{{ docker_USER }}"
+    password: "{{ docker_PASS }}"
+
+- name: Generate docker-compose file
+  template:
+    src: docker-compose.yml
+    dest: "{{ component_DIR }}/docker-compose.yml"
+
+- name: Run Docker container with chosen component
+  docker_compose:
+    project_src: "{{ component_DIR }}"
+    project_name: "{{ project_NAME }}"
+    # services: "{{ component_NAME }}"
+    restarted: yes
+    pull: yes
+    

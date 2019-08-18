@@ -1,0 +1,24 @@
+---
+
+- name: Install nginx
+  apt: 
+    name: nginx 
+    state: present
+    update_cache: yes
+
+- name: Copy nginx configuration
+  template: 
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+
+- name: Copy site configuration
+  template: 
+    src: "{{ site_conf }}"
+    dest: /etc/nginx/sites-available/{{ site_conf }}
+
+- name: Enable site
+  file:
+    src: '/etc/nginx/sites-available/{{ site_conf }}'
+    dest: '/etc/nginx/sites-enabled/{{ site_conf }}'
+    state: link
+  notify: restart nginx 

@@ -1,0 +1,7 @@
+---
+
+- name: APP Deploy
+  hosts: app_server
+  become_user: "{{ user }}"
+  roles: 
+    - deploy

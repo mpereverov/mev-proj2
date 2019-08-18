@@ -1,0 +1,5 @@
+
+user: operator
+ansible_python_interpreter: /usr/bin/python3
+# docker_USER: "{{vault_docker_USER}}"
+# docker_PASS: "{{vault_docker_PASS}}"
