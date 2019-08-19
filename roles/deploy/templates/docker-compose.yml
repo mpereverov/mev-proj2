@@ -4,21 +4,29 @@ version: "3.7"
 
 services:
 
-  "{{ service_NAME }}":
-    image: "{{ IMAGE_NAME }}:{{ BUILD_NUMBER }}"
-    container_name: "{{ container_NAME }}"
-    ports: 
-      - "{{ PORTS }}"
-    networks: 
-      - "{{ network_NAME }}"
-
-  # SPA:
+  # "{{ service_NAME }}":
   #   image: "{{ IMAGE_NAME }}:{{ BUILD_NUMBER }}"
-  #   container_name: SPA
+  #   container_name: "{{ container_NAME }}"
   #   ports: 
-  #     - "4003:4003"
-  #   networks: 
-  #     - mev
+  #     - "{{ PORTS }}"
+    # networks: 
+    #   - "{{ network_NAME }}"
+
+  API:
+    image: "{{ IMAGE_NAME }}:{{ BUILD_NUMBER }}"
+    container_name: API
+    ports: 
+      - "4004:4004"
+    # networks: 
+    #   - "{{ network_NAME }}"
+
+  SPA:
+    image: "{{ IMAGE_NAME }}:{{ BUILD_NUMBER }}"
+    container_name: SPA
+    ports: 
+      - "4003:4003"
+    # networks: 
+    #   - mev
 # 
-networks:
-  "{{ network_NAME }}":
+# networks:
+#   "{{ network_NAME }}":

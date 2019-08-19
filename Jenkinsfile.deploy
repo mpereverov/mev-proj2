@@ -9,16 +9,21 @@ pipeline {
 					usernamePassword(credentialsId: 'dockeruser', passwordVariable: 'docker_PASSWORD', 
 						usernameVariable: 'docker_USERNAME')]) {
 
-		    		sh "ansible-playbook deploy.yml -e \
-			    		component_NAME=api \
-			    		project_NAME=app \
-			    		PORTS=4004:4004 \
-			    		network_NAME=mev \
+					// parameters {
+					//   choice choices: ['API', 'SPA'], description: 'descr', name: 'component_NAME'
+					//   string defaultValue: 'app', description: 'descr', name: 'project_NAME', trim: false
+					// }
+
+
+		    		sh "ansible-playbook deploy.yml --extra-vars='{ \
+		    			IMAGE_NAME=$params.IMAGE_NAME\
+		    			BUILD_NUMBER=$params.BUILD_NUMBER\
+			    		component_NAME=$params.component_NAME \
 			    		docker_USERNAME=$docker_USERNAME \
 			    		docker_PASSWORD=$docker_PASSWORD \
 			    		aws_KEY=$aws_KEY \
 			    		aws_USERNAME=$aws_USERNAME \
-		    		"
+		    		}'"
 	    		}
 	    	}
 		}

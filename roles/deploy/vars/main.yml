@@ -1,10 +1,10 @@
-# project_NAME: app
-service_NAME: "{{ component_NAME }}"
-container_NAME: "{{ component_NAME }}"
+project_NAME: app
+# service_NAME: "{{ component_NAME }}"
+# container_NAME: "{{ component_NAME }}"
 # component_NAME: spa
 # PORTS: "4003:4003"
 # network_NAME: mev
-IMAGE_NAME: mpereverov/mev-spa
+# IMAGE_NAME: mpereverov/mev-spa
 # BUILD_NUMBER: 7
 component_DIR: ~/{{ component_NAME }}
 

@@ -20,7 +20,7 @@
   docker_compose:
     project_src: "{{ component_DIR }}"
     project_name: "{{ project_NAME }}"
-    # services: "{{ component_NAME }}"
+    services: "{{ component_NAME }}"
     restarted: yes
     pull: yes
     
