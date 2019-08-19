@@ -1,3 +1,4 @@
+
 pipeline {
 	agent any
 	stages {
@@ -14,14 +15,14 @@ pipeline {
 					//   string defaultValue: 'app', description: 'descr', name: 'project_NAME', trim: false
 					// }
 
-
+					sh ""
 		    		sh "ansible-playbook deploy.yml --extra-vars='{ \
-		    			IMAGE_NAME=$env.SRC_IMAGE_NAME\
-		    			BUILD_NUMBER=$env.SRC_BUILD_NUMBER\
+		    			IMAGE_NAME=$IMAGE_NAME\
+		    			BUILD_NUMBER=$IMAGE_TAG\
 			    		component_NAME=$env.component_NAME \
 			    		docker_USERNAME=$env.docker_USERNAME \
 			    		docker_PASSWORD=$env.docker_PASSWORD \
-			    		aws_KEY=$env.aws_KEY \
+			    		private_key_file=$env.aws_KEY \
 			    		aws_USERNAME=$env.aws_USERNAME \
 		    		}'"
 	    		}
