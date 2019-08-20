@@ -14,20 +14,20 @@ pipeline {
 					//   choice choices: ['API', 'SPA'], description: 'descr', name: 'component_NAME'
 					//   string defaultValue: 'app', description: 'descr', name: 'project_NAME', trim: false
 					// }
-					parameters{
-						string
+					parameters([
+						string([
 							defaultValue: '',
 							description:'',
 							name: 'IMAGE_NAME',
 							trim: true
-						
-						string
+						])
+						string([
 							defaultValue: '$env.BUILD_NUMBER',
 							description:'',
 							name: 'IMAGE_TAG',
 							trim: true
-						
-					} 
+						])
+					]) 
 
 					sh ""
 		    		sh "ansible-playbook deploy.yml --extra-vars='{ \
