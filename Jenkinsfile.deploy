@@ -1,17 +1,3 @@
-parameters{
-		string
-			defaultValue: 'mpereverov/mev-API',
-			description:'',
-			name: 'IMAGE_NAME',
-			trim: true
-		
-		string
-			defaultValue: '$env.BUILD_NUMBER',
-			description:'',
-			name: 'IMAGE_TAG',
-			trim: true
-		
-} 
 
 pipeline {
 	agent any
@@ -28,6 +14,20 @@ pipeline {
 					//   choice choices: ['API', 'SPA'], description: 'descr', name: 'component_NAME'
 					//   string defaultValue: 'app', description: 'descr', name: 'project_NAME', trim: false
 					// }
+					parameters{
+						string
+							defaultValue: 'mpereverov/mev-api',
+							description:'',
+							name: 'IMAGE_NAME',
+							trim: true
+						
+						string
+							defaultValue: '$env.BUILD_NUMBER',
+							description:'',
+							name: 'IMAGE_TAG',
+							trim: true
+						
+					} 
 
 					sh ""
 		    		sh "ansible-playbook deploy.yml --extra-vars='{ \
