@@ -1,4 +1,3 @@
-
 pipeline {
 	agent any
 	stages {
@@ -11,7 +10,7 @@ pipeline {
 						usernameVariable: 'docker_USERNAME')]) {
 
 
-					sh "echo $env.aws_KEY"
+					sh "echo $params.IMAGE_NAME, $params.IMAGE_TAG, $params.component_NAME"
 		    		sh "ansible-playbook deploy.yml --extra-vars='{ \
 		    			IMAGE_NAME=$params.IMAGE_NAME \
 		    			BUILD_NUMBER=$params.IMAGE_TAG \
