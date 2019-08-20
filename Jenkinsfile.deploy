@@ -10,30 +10,12 @@ pipeline {
 					usernamePassword(credentialsId: 'dockeruser', passwordVariable: 'docker_PASSWORD', 
 						usernameVariable: 'docker_USERNAME')]) {
 
-					// parameters {
-					//   choice choices: ['API', 'SPA'], description: 'descr', name: 'component_NAME'
-					//   string defaultValue: 'app', description: 'descr', name: 'project_NAME', trim: false
-					// }
-					parameters([
-						string([
-							defaultValue: '',
-							description:'',
-							name: 'IMAGE_NAME',
-							trim: true
-						]),
-						string([
-							defaultValue: '$env.BUILD_NUMBER',
-							description:'',
-							name: 'IMAGE_TAG',
-							trim: true
-						])
-					]) 
 
-					sh ""
+					sh "echo $env.aws_KEY"
 		    		sh "ansible-playbook deploy.yml --extra-vars='{ \
-		    			IMAGE_NAME=$IMAGE_NAME\
-		    			BUILD_NUMBER=$IMAGE_TAG\
-			    		component_NAME=$env.component_NAME \
+		    			IMAGE_NAME=$params.IMAGE_NAME \
+		    			BUILD_NUMBER=$params.IMAGE_TAG \
+			    		component_NAME=$params.component_NAME \
 			    		docker_USERNAME=$env.docker_USERNAME \
 			    		docker_PASSWORD=$env.docker_PASSWORD \
 			    		private_key_file=$env.aws_KEY \
