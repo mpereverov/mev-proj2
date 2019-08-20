@@ -1,3 +1,17 @@
+parameters([
+		string(
+			defaultValue: 'mpereverov/mev-API',
+			description:'',
+			name: 'IMAGE_NAME',
+			trim: true
+		),
+		string(
+			defaultValue: '$env.BUILD_NUMBER',
+			description:'',
+			name: 'IMAGE_TAG',
+			trim: true
+		),
+	])
 
 pipeline {
 	agent any
