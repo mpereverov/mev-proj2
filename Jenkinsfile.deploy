@@ -20,7 +20,7 @@ pipeline {
 							description:'',
 							name: 'IMAGE_NAME',
 							trim: true
-						])
+						]),
 						string([
 							defaultValue: '$env.BUILD_NUMBER',
 							description:'',
