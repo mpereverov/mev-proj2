@@ -5,7 +5,7 @@ version: "3.7"
 services:
 
   # "{{ service_NAME }}":
-  #   image: "{{ IMAGE_NAME }}:{{ BUILD_NUMBER }}"
+  #   image: "{{ IMAGE_NAME }}:{{ IMAGE_TAG }}"
   #   container_name: "{{ container_NAME }}"
   #   ports: 
   #     - "{{ PORTS }}"
@@ -13,7 +13,7 @@ services:
     #   - "{{ network_NAME }}"
 
   API:
-    image: "{{ IMAGE_NAME }}:{{ BUILD_NUMBER }}"
+    image: "{{ IMAGE_NAME }}:{{ IMAGE_TAG }}"
     container_name: API
     ports: 
       - "4004:4004"
@@ -21,7 +21,7 @@ services:
     #   - "{{ network_NAME }}"
 
   SPA:
-    image: "{{ IMAGE_NAME }}:{{ BUILD_NUMBER }}"
+    image: "{{ IMAGE_NAME }}:{{ IMAGE_TAG }}"
     container_name: SPA
     ports: 
       - "4003:4003"
