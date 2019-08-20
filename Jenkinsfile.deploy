@@ -1,3 +1,5 @@
+
+
 pipeline {
 	agent any
 	stages {
@@ -9,11 +11,20 @@ pipeline {
 					usernamePassword(credentialsId: 'dockeruser', passwordVariable: 'docker_PASSWORD', 
 						usernameVariable: 'docker_USERNAME')]) {
 
-					sh "echo $params.IMAGE_NAME" 
-					sh "echo $params.IMAGE_TAG"
-					sh "echo $params.component_NAME"
 
-		    		sh "ansible-playbook deploy.yml --extra-vars = IMAGE_NAME=$params.IMAGE_NAME BUILD_NUMBER=$params.IMAGE_TAG component_NAME=$params.component_NAME docker_USERNAME=$env.docker_USERNAME docker_PASSWORD=$env.docker_PASSWORD private_key_file=$env.aws_KEY aws_USERNAME=$env.aws_USERNAME"
+					sh "echo $env.IMAGE_NAME" 
+					sh "echo $env.IMAGE_TAG"
+					sh "echo $env.component_NAME"
+
+		    		sh "ansible-playbook deploy.yml --extra-vars='{ \
+		    			IMAGE_NAME=$env.IMAGE_NAME \
+		    			BUILD_NUMBER=$env.IMAGE_TAG \
+			    		component_NAME=$env.component_NAME \
+			    		docker_USERNAME=$env.docker_USERNAME \
+			    		docker_PASSWORD=$env.docker_PASSWORD \
+			    		private_key_file=$env.aws_KEY \
+			    		aws_USERNAME=$env.aws_USERNAME \
+		    		}'"
 	    		}
 	    	}
 		}
