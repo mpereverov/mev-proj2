@@ -16,7 +16,7 @@ pipeline {
 					// }
 					parameters{
 						string
-							defaultValue: 'mpereverov/mev-api',
+							defaultValue: '',
 							description:'',
 							name: 'IMAGE_NAME',
 							trim: true
