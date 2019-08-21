@@ -1,7 +1,7 @@
 properties([
 	parameters([
 		string(
-			defaultValue: '$env.IMAGE_NAME',
+			defaultValue: '$JOB_NAME',
 			description:'',
 			name: 'IMAGE_NAME',
 			trim: true
@@ -37,9 +37,7 @@ pipeline {
 					sh "echo $env.IMAGE_TAG"
 					sh "echo $env.component_NAME"
 
-					sh "echo $params.IMAGE_NAME" 
-					sh "echo $params.IMAGE_TAG"
-					sh "echo $params.component_NAME"
+					
 
 		    		// sh "ansible-playbook deploy.yml --extra-vars='{ \
 		    		// 	IMAGE_NAME=$env.IMAGE_NAME \
@@ -51,6 +49,9 @@ pipeline {
 			    	// 	remote_user=$env.aws_USERNAME \
 		    		// }'"
 	    		}
+	    			sh "echo $params.IMAGE_NAME" 
+					sh "echo $params.IMAGE_TAG"
+					sh "echo $params.component_NAME"
 	    	}
 		}
 	}
