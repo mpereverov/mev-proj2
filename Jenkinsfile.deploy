@@ -32,21 +32,10 @@ pipeline {
 					usernamePassword(credentialsId: 'dockeruser', passwordVariable: 'docker_PASSWORD', 
 						usernameVariable: 'docker_USERNAME')]) {
 
-
-					sh "echo $env.IMAGE_NAME" 
-					sh "echo $env.IMAGE_TAG"
-					sh "echo $env.component_NAME"
-
-					sh"echo '######################'"
-
-					sh "echo $params.IMAGE_NAME" 
-					sh "echo $params.IMAGE_TAG"
-					sh "echo $params.component_NAME"
-
 		    		sh "ansible-playbook deploy.yml --extra-vars= \
 		    			IMAGE_NAME=$params.IMAGE_NAME \
 		    			IMAGE_TAG=$params.IMAGE_TAG \
-			    		component_NAME=$env.component_NAME \
+			    		component_NAME=$params.component_NAME \
 			    		docker_USERNAME=$env.docker_USERNAME \
 			    		docker_PASSWORD=$env.docker_PASSWORD \
 			    		private_key_file=$env.aws_KEY \
