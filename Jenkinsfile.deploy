@@ -1,25 +1,25 @@
-properties([
-	parameters([
-		string(
-			defaultValue: '$JOB_NAME',
-			description:'',
-			name: 'IMAGE_NAME',
-			trim: true
-		),
-		string(
-			defaultValue: '$env.component_NAME',
-			description:'',
-			name: 'component_NAME',
-			trim: true
-		),
-		// string(
-		// 	defaultValue: '$env.BUILD_NUMBER',
-		// 	description:'',
-		// 	name: 'IMAGE_TAG',
-		// 	trim: true
-		// ),
-	])
-])
+// properties([
+// 	parameters([
+// 		string(
+// 			defaultValue: '$JOB_NAME',
+// 			description:'',
+// 			name: 'IMAGE_NAME',
+// 			trim: true
+// 		),
+// 		string(
+// 			defaultValue: '$env.component_NAME',
+// 			description:'',
+// 			name: 'component_NAME',
+// 			trim: true
+// 		),
+// 		// string(
+// 		// 	defaultValue: '$env.BUILD_NUMBER',
+// 		// 	description:'',
+// 		// 	name: 'IMAGE_TAG',
+// 		// 	trim: true
+// 		// ),
+// 	])
+// ])
 
 pipeline {
 	agent any
@@ -37,7 +37,7 @@ pipeline {
 					sh "echo $env.IMAGE_TAG"
 					sh "echo $env.component_NAME"
 
-					
+					sh"echo ######################"
 
 		    		// sh "ansible-playbook deploy.yml --extra-vars='{ \
 		    		// 	IMAGE_NAME=$env.IMAGE_NAME \
