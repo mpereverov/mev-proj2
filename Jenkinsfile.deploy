@@ -1,25 +1,25 @@
-// properties([
-// 	parameters([
-// 		string(
-// 			defaultValue: '$JOB_NAME',
-// 			description:'',
-// 			name: 'IMAGE_NAME',
-// 			trim: true
-// 		),
-// 		string(
-// 			defaultValue: '$env.component_NAME',
-// 			description:'',
-// 			name: 'component_NAME',
-// 			trim: true
-// 		),
-// 		// string(
-// 		// 	defaultValue: '$env.BUILD_NUMBER',
-// 		// 	description:'',
-// 		// 	name: 'IMAGE_TAG',
-// 		// 	trim: true
-// 		// ),
-// 	])
-// ])
+properties([
+	parameters([
+		string(
+			defaultValue: 'mpereverov/mev-api',
+			description:'',
+			name: 'IMAGE_NAME',
+			trim: true
+		),
+		string(
+			defaultValue: 'API',
+			description:'',
+			name: 'component_NAME',
+			trim: true
+		),
+		string(
+			defaultValue: '92',
+			description:'',
+			name: 'IMAGE_TAG',
+			trim: true
+		),
+	])
+])
 
 pipeline {
 	agent any
@@ -32,8 +32,8 @@ pipeline {
 					usernamePassword(credentialsId: 'dockeruser', passwordVariable: 'docker_PASSWORD', 
 						usernameVariable: 'docker_USERNAME')]) {
 
-					sh "ssh -i '${aws_KEY}' 'ubuntu@34.208.41.167'"
-		    		sh "ansible-playbook deploy.yml --extra-vars '{ \
+					// sh "(ssh -i $aws_KEY ubuntu@34.208.41.167)"
+		    		sh "ansible-playbook -vvv deploy.yml --extra-vars '{ \
 		    			IMAGE_NAME=$params.IMAGE_NAME \
 		    			IMAGE_TAG=$params.IMAGE_TAG \
 			    		component_NAME=$params.component_NAME \
