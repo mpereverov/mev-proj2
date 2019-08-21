@@ -4,7 +4,7 @@ project_NAME: app
 # component_NAME: spa
 # PORTS: "4003:4003"
 # network_NAME: mev
-# IMAGE_NAME: mpereverov/mev-spa
-# BUILD_NUMBER: 7
+IMAGE_NAME: "{{ IMAGE_NAME }}"
+IMAGE_TAG: "{{ IMAGE_TAG }}"
 component_DIR: ~/{{ component_NAME }}
 
