@@ -33,11 +33,11 @@ pipeline {
 						usernameVariable: 'docker_USERNAME')]) {
 
 
-					sh "echo $env.IMAGE_NAME" 
+					sh "echo ${env.IMAGE_NAME}" 
 					sh "echo $env.IMAGE_TAG"
 					sh "echo $env.component_NAME"
 
-					sh "echo $params.IMAGE_NAME" 
+					sh "echo ${params.IMAGE_NAME}" 
 					sh "echo $params.IMAGE_TAG"
 					sh "echo $params.component_NAME"
 
