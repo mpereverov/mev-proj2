@@ -32,7 +32,7 @@ pipeline {
 					usernamePassword(credentialsId: 'dockeruser', passwordVariable: 'docker_PASSWORD', 
 						usernameVariable: 'docker_USERNAME')]) {
 
-					sh "ssh -i $aws_KEY ubuntu@34.208.41.167"
+					sh "ssh -i '${aws_KEY}' 'ubuntu@34.208.41.167'"
 		    		sh "ansible-playbook deploy.yml --extra-vars '{ \
 		    			IMAGE_NAME=$params.IMAGE_NAME \
 		    			IMAGE_TAG=$params.IMAGE_TAG \
