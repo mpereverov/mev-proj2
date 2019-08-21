@@ -1,15 +1,15 @@
 properties([
 	parameters([
 		string(
-			defaultValue: 'mpereverov/mev-api',
-			description:'',
-			name: 'IMAGE_NAME',
-			trim: true
-		),
-		string(
 			defaultValue: 'API',
 			description:'',
 			name: 'component_NAME',
+			trim: true
+		),
+		string(
+			defaultValue: 'mpereverov/mev-api',
+			description:'',
+			name: 'IMAGE_NAME',
 			trim: true
 		),
 		string(
