@@ -13,7 +13,7 @@ pipeline {
 
 
 					sh "echo $env.IMAGE_NAME" 
-					sh "echo ${env.IMAGE_TAG}"
+					sh "echo $env.IMAGE_TAG"
 					sh "echo $env.component_NAME"
 
 		    		sh "ansible-playbook deploy.yml --extra-vars='{ \
