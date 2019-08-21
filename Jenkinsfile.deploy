@@ -39,7 +39,7 @@ pipeline {
 			    		component_NAME=$params.component_NAME \
 			    		docker_USERNAME=$env.docker_USERNAME \
 			    		docker_PASSWORD=$env.docker_PASSWORD \
-			    		aws_KEY=$env.aws_KEY \
+			    		private_key_file=$env.aws_KEY \
 			    		aws_USERNAME=$env.aws_USERNAME \
 		    		}'"
 
