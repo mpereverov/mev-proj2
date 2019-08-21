@@ -44,8 +44,8 @@ pipeline {
 					sh "echo $params.component_NAME"
 
 		    		sh "ansible-playbook deploy.yml --extra-vars= \
-		    			IMAGE_NAME=$env.IMAGE_NAME \
-		    			IMAGE_TAG=$env.IMAGE_TAG \
+		    			IMAGE_NAME=$params.IMAGE_NAME \
+		    			IMAGE_TAG=$params.IMAGE_TAG \
 			    		component_NAME=$env.component_NAME \
 			    		docker_USERNAME=$env.docker_USERNAME \
 			    		docker_PASSWORD=$env.docker_PASSWORD \
