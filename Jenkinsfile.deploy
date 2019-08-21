@@ -54,7 +54,7 @@ pipeline {
 			    		docker_USERNAME=$env.docker_USERNAME \
 			    		docker_PASSWORD=$env.docker_PASSWORD \
 			    		private_key_file=$env.aws_KEY \
-			    		remote_user=ubuntu \
+			    		remote_user=$env.aws_USERNAME \
 		    		}'"
 
 		    		// sh "ansible-playbook deploy.yml --extra-vars '{ \
