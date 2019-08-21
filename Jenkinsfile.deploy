@@ -1,13 +1,13 @@
 properties([
 	parameters([
 		string(
-			defaultValue: '${env.IMAGE_NAME}',
+			defaultValue: '$env.IMAGE_NAME',
 			description:'',
 			name: 'IMAGE_NAME',
 			trim: true
 		),
 		string(
-			defaultValue: '${env.component_NAME}',
+			defaultValue: '$env.component_NAME',
 			description:'',
 			name: 'component_NAME',
 			trim: true
@@ -34,22 +34,22 @@ pipeline {
 
 
 					sh "echo ${env.IMAGE_NAME}" 
-					sh "echo ${env.IMAGE_TAG}"
+					sh "echo $env.IMAGE_TAG"
 					sh "echo $env.component_NAME"
 
 					sh "echo ${params.IMAGE_NAME}" 
-					sh "echo ${params.IMAGE_TAG}"
+					sh "echo $params.IMAGE_TAG"
 					sh "echo $params.component_NAME"
 
-		    		sh "ansible-playbook deploy.yml --extra-vars='{ \
-		    			IMAGE_NAME=$env.IMAGE_NAME \
-		    			IMAGE_TAG=$env.IMAGE_TAG \
-			    		component_NAME=$env.component_NAME \
-			    		docker_USERNAME=$env.docker_USERNAME \
-			    		docker_PASSWORD=$env.docker_PASSWORD \
-			    		private_key_file=$env.aws_KEY \
-			    		remote_user=$env.aws_USERNAME \
-		    		}'"
+		    		// sh "ansible-playbook deploy.yml --extra-vars='{ \
+		    		// 	IMAGE_NAME=$env.IMAGE_NAME \
+		    		// 	IMAGE_TAG=$env.IMAGE_TAG \
+			    	// 	component_NAME=$env.component_NAME \
+			    	// 	docker_USERNAME=$env.docker_USERNAME \
+			    	// 	docker_PASSWORD=$env.docker_PASSWORD \
+			    	// 	private_key_file=$env.aws_KEY \
+			    	// 	remote_user=$env.aws_USERNAME \
+		    		// }'"
 	    		}
 	    	}
 		}
