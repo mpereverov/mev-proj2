@@ -18,16 +18,20 @@ properties([
 			name: 'IMAGE_TAG',
 			trim: true
 		),
-		sshUserPrivateKey(
-			credentialsId: 'aws_id_key', 
-			keyFileVariable: 'aws_KEY', 
-			usernameVariable: 'aws_USERNAME'
-		), 
-		usernamePassword(
-			credentialsId: 'dockeruser', 
-			passwordVariable: 'docker_PASSWORD', 
-			usernameVariable: 'docker_USERNAME'
-		)
+		credentials(
+			credentialType: 'com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey', 
+			defaultValue: 'aws_id_key', 
+			description: '', 
+			name: 'aws_id_key', 
+			required: true
+			),
+		credentials(
+			credentialType: 'com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl', 
+			defaultValue: 'dockeruser', 
+			description: '', 
+			name: 'dockeruser', 
+			required: true
+			)
 	])
 ])
 
