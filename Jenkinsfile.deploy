@@ -80,9 +80,9 @@ pipeline {
 		    		// sh "ansible-playbook deploy.yml --extra-vars \\\"extra-vars.json\\\""
 
 		    		sh "ansible-playbook deploy.yml --extra-vars \\\"{\
+\"component_NAME\":\"${params.component_NAME}\", \
 \"IMAGE_NAME\":\"${params.IMAGE_NAME}\", \
 \"IMAGE_TAG\":\"${params.IMAGE_TAG}\", \
-\"comp_NAME\":\"{params.comp_NAME}\", \
 \"docker_USERNAME\":\"${env.docker_USERNAME}\", \
 \"docker_PASSWORD\":\"${env.docker_PASSWORD}\", \
 \"private_key_file\":\"${env.aws_KEY}\", \
