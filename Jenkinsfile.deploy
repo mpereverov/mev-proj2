@@ -86,7 +86,7 @@ pipeline {
 \\\"docker_USERNAME\\\":\\\"${env.docker_USERNAME}\\\",\
 \\\"docker_PASSWORD\\\":\\\"${env.docker_PASSWORD}\\\",\
 \\\"private_key_file\\\":\\\"${env.aws_KEY}\\\",\
-\\\"ansible_user\\\":\\\"${env.aws_USERNAME}\\\"\
+\\\"remote_user\\\":\\\"ubuntu\\\"\
 }\\\""
 	    		}
 
