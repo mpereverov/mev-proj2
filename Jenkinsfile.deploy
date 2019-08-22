@@ -72,14 +72,14 @@ pipeline {
 
 		    		// sh "ansible-playbook deploy.yml --extra-vars \\\"extra-vars.json\\\""
 
-	sh "ansible-playbook deploy.yml --extra-vars \"{\
-	\"component_NAME\":\"${env.component_NAME}\", \
+	sh "ansible-playbook deploy.yml --extra-vars \\\"{\
+	\"component_NAME\":\"{env.component_NAME}\", \
 	\"img_NAME\":\"${env.img_NAME}\", \
 	\"img_TAG\":\"${env.img_TAG}\", \
 	\"docker_USERNAME\":\"${env.docker_USERNAME}\", \
 	\"docker_PASSWORD\":\"${env.docker_PASSWORD}\", \
 	\"private_key_file\":\"${env.aws_KEY}\", \
-	\"remote_user\":\"ubuntu\"}\""
+	\"remote_user\":\"ubuntu\"}\\\""
 	    		}
 
 // 	    		sh "cat ./crds/aws_user > "
