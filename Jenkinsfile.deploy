@@ -71,8 +71,8 @@ IMAGE_NAME=${params.IMAGE_NAME} \
 component_NAME=${params.component_NAME} \
 docker_USERNAME=${env.docker_USERNAME} \
 docker_PASSWORD=${env.docker_PASSWORD} \
-private_key_file=${env.aws_KEY} \
-remote_user=ubuntu'"
+aws_KEY=${env.aws_KEY} \
+aws_USERNAME=${env.aws_USERNAME}'"
 					
 					// sh "echo ${env.aws_USERNAME} > ./crds/aws_user"
 					// sh "echo ${env.aws_KEY} > ./crds/key"
