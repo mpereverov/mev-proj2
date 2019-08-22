@@ -74,7 +74,7 @@ pipeline {
 // private_key_file=${env.aws_KEY} \
 // remote_user=${env.aws_USERNAME}\\\""
 					
-					sh "mkdir ./crds && echo ${env.aws_USERNAME} > ./crds/aws_user"
+					sh "echo ${env.aws_USERNAME} > ./crds/aws_user"
 					sh "cat ./crds/aws_user"
 
 		    	// 	sh "ansible-playbook deploy.yml --extra-vars '{\
