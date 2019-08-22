@@ -72,7 +72,7 @@ pipeline {
 
 		    		// sh "ansible-playbook deploy.yml --extra-vars "extra-vars.json""
 
-sh ansible-playbook deploy.yml --extra-vars "{\
+sh 'ansible-playbook deploy.yml --extra-vars' "{\
 "component_NAME":"${env.component_NAME}", \
 "img_NAME":"${env.img_NAME}", \
 "img_TAG":"${env.img_TAG}", \
