@@ -65,14 +65,14 @@ pipeline {
 
 			  		// sh "ssh -o StrictHostKeyChecking=no -T -i ${aws_KEY} ${aws_USERNAME}@34.208.41.167"
 
-		    		sh "ansible-playbook deploy.yml --extra-vars \
-\"""IMAGE_TAG=${params.IMAGE_TAG} \
+		    		sh 'ansible-playbook deploy.yml --extra-vars \
+\"IMAGE_TAG=${params.IMAGE_TAG} \
 IMAGE_NAME=${params.IMAGE_NAME} \
 component_NAME=${params.component_NAME} \
 docker_USERNAME=${env.docker_USERNAME} \
 docker_PASSWORD=${env.docker_PASSWORD} \
 aws_KEY=${aws_KEY} \
-aws_USERNAME=${aws_USERNAME}""\""
+aws_USERNAME=${aws_USERNAME}\"'
 					
 					// sh "echo ${env.aws_USERNAME} > ./crds/aws_user"
 					// sh "echo ${env.aws_KEY} > ./crds/key"
