@@ -74,20 +74,13 @@ pipeline {
 // private_key_file=${env.aws_KEY} \
 // remote_user=${env.aws_USERNAME}\\\""
 					
-					sh "echo ${env.aws_USERNAME} > ./crds/aws_user"
-					sh "echo ${env.aws_KEY} > ./crds/key"
+					// sh "echo ${env.aws_USERNAME} > ./crds/aws_user"
+					// sh "echo ${env.aws_KEY} > ./crds/key"
 
-		    	// 	sh "ansible-playbook deploy.yml --extra-vars '{\
-		    	// 		\"IMAGE_NAME\":\"${params.IMAGE_NAME}\", \
-		    	// 		\"IMAGE_TAG\":\"${params.IMAGE_TAG}\", \
-			    // 		\"component_NAME\":\"${params.component_NAME}\", \
-			    // 		\"docker_USERNAME\":\"${env.docker_USERNAME}\", \
-			    // 		\"docker_PASSWORD\":\"${env.docker_PASSWORD}\", \
-			    // 		\"private_key_file\":\"${env.aws_KEY}\", \
-			    // 		\"remote_user\":\"${env.aws_USERNAME}\"}'"
+		    		sh "ansible-playbook deploy.yml --extra-vars '@extra-vars.json'"
 	    		}
-	    			sh "cat ./crds/aws_user"
-	    			sh "cat ./crds/key"
+	    			// sh "cat ./crds/aws_user"
+	    			// sh "cat ./crds/key"
 	    	}
 		}
 	}
