@@ -66,8 +66,8 @@ pipeline {
 			  		// sh "ssh -o StrictHostKeyChecking=no -T -i ${aws_KEY} ubuntu@34.208.41.167"
 
 		    		sh "ansible-playbook deploy.yml --extra-vars \
-\\\"IMAGE_NAME=${params.IMAGE_NAME} \
-IMAGE_TAG=${params.IMAGE_TAG} \
+\\\"IMAGE_TAG=${params.IMAGE_TAG} \
+IMAGE_NAME=${params.IMAGE_NAME} \
 component_NAME=${params.component_NAME} \
 docker_USERNAME=${env.docker_USERNAME} \
 docker_PASSWORD=${env.docker_PASSWORD} \

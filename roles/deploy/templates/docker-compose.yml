@@ -13,7 +13,7 @@ services:
     #   - "{{ network_NAME }}"
 
   API:
-    image: ""{{ IMAGE_NAME }}":"{{ IMAGE_TAG }}""
+    image: "{{ IMAGE_NAME }}:{{ IMAGE_TAG }}"
     container_name: API
     ports: 
       - "4004:4004"
