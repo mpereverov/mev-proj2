@@ -77,7 +77,7 @@ pipeline {
 					// sh "echo ${env.aws_USERNAME} > ./crds/aws_user"
 					// sh "echo ${env.aws_KEY} > ./crds/key"
 
-		    		sh "ansible-playbook deploy.yml --extra-vars '@extra-vars.json'"
+		    		sh "ansible-playbook deploy.yml --extra-vars \"@extra-vars.json\""
 	    		}
 	    			// sh "cat ./crds/aws_user"
 	    			// sh "cat ./crds/key"
