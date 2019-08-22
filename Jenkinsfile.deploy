@@ -65,22 +65,22 @@ pipeline {
 
 			  		// sh "ssh -o StrictHostKeyChecking=no -T -i ${aws_KEY} ${aws_USERNAME}@34.208.41.167"
 
-		    		sh "#!/bin/bash -xe ansible-playbook deploy.yml --extra-vars \"IMAGE_TAG=${IMAGE_TAG} IMAGE_NAME=${IMAGE_NAME} component_NAME=${component_NAME} docker_USERNAME=${docker_USERNAME} docker_PASSWORD=${docker_PASSWORD} aws_KEY=${aws_KEY} aws_USERNAME=${aws_USERNAME}\""
+		    		// sh "ansible-playbook deploy.yml --extra-vars \"IMAGE_TAG=${IMAGE_TAG} IMAGE_NAME=${IMAGE_NAME} component_NAME=${component_NAME} docker_USERNAME=${docker_USERNAME} docker_PASSWORD=${docker_PASSWORD} aws_KEY=${aws_KEY} aws_USERNAME=${aws_USERNAME}\""
 					
 					// sh "echo ${env.aws_USERNAME} > ./crds/aws_user"
 					// sh "echo ${env.aws_KEY} > ./crds/key"
 
 		    		// sh "ansible-playbook deploy.yml --extra-vars \\\"extra-vars.json\\\""
 
-// 		    		sh "ansible-playbook deploy.yml --extra-vars \\\"{\
-// \\\"component_NAME\\\":\\\"${params.component_NAME}\\\",\
-// \\\"IMAGE_NAME\\\":\\\"${params.IMAGE_NAME}\\\",\
-// \\\"IMAGE_TAG\\\":\\\"${params.IMAGE_TAG}\\\",\
-// \\\"docker_USERNAME\\\":\\\"${env.docker_USERNAME}\\\",\
-// \\\"docker_PASSWORD\\\":\\\"${env.docker_PASSWORD}\\\",\
-// \\\"private_key_file\\\":\\\"${env.aws_KEY}\\\",\
-// \\\"remote_user\\\":\\\"${env.aws_USERNAME}ubuntu\\\"\
-// }\\\""
+		    		sh "ansible-playbook deploy.yml --extra-vars \"{\
+\"component_NAME\":\"${params.component_NAME}\",\
+\"IMAGE_NAME\":\"${params.IMAGE_NAME}\",\
+\"IMAGE_TAG\":\"${params.IMAGE_TAG}\",\
+\"docker_USERNAME\":\"${env.docker_USERNAME}\",\
+\"docker_PASSWORD\":\"${env.docker_PASSWORD}\",\
+\"private_key_file\":\"${env.aws_KEY}\",\
+\"remote_user\":\"ubuntu\"\
+}\""
 	    		}
 
 // 	    		sh "cat ./crds/aws_user > "
