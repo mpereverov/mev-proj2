@@ -72,14 +72,14 @@ pipeline {
 		    		// 			    		private_key_file=$env.aws_KEY \
 		    		// 			    		remote_user=$env.aws_USERNAME}""'
 
-		    		sh "ansible-playbook deploy.yml --extra-vars '''{\
-		    				    				    			'component_NAME':'${params.component_NAME}', \
-		    				    				    			'IMAGE_NAME':'${params.IMAGE_NAME}', \
-		    				    				    			'IMAGE_TAG':'${params.IMAGE_TAG}', \
-		    				    				    			'private_key_file':'${env.aws_KEY}', \
-		    				    				    			'remote_user':'${env.aws_USERNAME}', \
-		    				    				    			'docker_USERNAME':'${env.docker_USERNAME}', \
-		    				    				    			'docker_PASSWORD':'${env.docker_PASSWORD}'}'''"
+		    		sh "ansible-playbook deploy.yml --extra-vars "'{\
+		    				    			"IMAGE_NAME":"${params.IMAGE_NAME}", \
+		    				    			"IMAGE_TAG":"${params.IMAGE_TAG}", \
+		    					    		"component_NAME":"${params.component_NAME}", \
+		    					    		"docker_USERNAME":"${env.docker_USERNAME}", \
+		    					    		"docker_PASSWORD":"${env.docker_PASSWORD}", \
+		    					    		"private_key_file":"${env.aws_KEY}", \
+		    					    		"remote_user":"${env.aws_USERNAME}"}'""
 	    		}
 	    	}
 		}
