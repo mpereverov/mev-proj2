@@ -1,4 +1,2 @@
 
-docker_container_name: jenkins
-docker_image: jenkins/jenkins
-docker_pub_ports: 8080:8080
+

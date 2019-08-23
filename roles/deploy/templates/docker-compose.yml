@@ -4,29 +4,15 @@ version: "3.7"
 
 services:
 
-  # "{{ service_NAME }}":
-  #   image: "{{ IMAGE_NAME }}:{{ IMAGE_TAG }}"
-  #   container_name: "{{ container_NAME }}"
-  #   ports: 
-  #     - "{{ PORTS }}"
-    # networks: 
-    #   - "{{ network_NAME }}"
-
   API:
     image: "{{ img_NAME }}:{{ img_TAG }}"
-    container_name: API
+    container_name: api
     ports: 
       - "4004:4004"
-    # networks: 
-    #   - "{{ network_NAME }}"
 
   SPA:
     image: "{{ img_NAME }}:{{ img_TAG }}"
-    container_name: SPA
+    container_name: spa
     ports: 
       - "4003:4003"
-    # networks: 
-    #   - mev
-# 
-# networks:
-#   "{{ network_NAME }}":
+   

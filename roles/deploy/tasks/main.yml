@@ -5,6 +5,12 @@
     username: "{{ docker_USERNAME }}"
     password: "{{ docker_PASSWORD }}"
 
+- name: Delete component dir
+  file: 
+    path: "{{ component_DIR }}"
+    state: absent
+  tags: clean
+
 - name: Create component dir
   file: 
     path: "{{ component_DIR }}"
@@ -23,4 +29,4 @@
     services: "{{ component_NAME }}"
     restarted: yes
     pull: yes
-    
+  tags: run_cont

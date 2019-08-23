@@ -1,8 +1,8 @@
-# AWS_USERNAME: "{{aws_USERNAME}}"
-# AWS_KEY: "{{aws_KEY}}"
+# AWS_USERNAME: ubuntu
+# AWS_KEY: ~/.ssh/aws_id_rsa.pem
 user: operator
-# ansible_user: "{{ AWS_USERNAME }}"
-# ansible_ssh_private_key_file: "{{AWS_KEY}}"
+ansible_user: "{{ AWS_USERNAME }}"
+ansible_ssh_private_key_file: "{{AWS_KEY}}"
 ansible_python_interpreter: /usr/bin/python3
-# docker_USER: "{{vault_docker_USER}}"
-# docker_PASS: "{{vault_docker_PASS}}"
+# docker_USERNAME: mpereverov
+# docker_PASSWORD: WvoS3t57
