@@ -79,7 +79,7 @@ pipeline {
 			  // 		sh "echo ${aws_USERNAME} > ./crds/aws"
 					// sh "echo ${aws_KEY} >> ./crds/aws"
 		    		// sh "ansible-playbook deploy.yml --extra-vars \"{aws_USER=${aws_USERNAME} aws_SSH_KEY=${aws_KEY}}\""
-		    		sh "ansible-playbook deploy.yml --user ${aws_USERNAME} --private_key ${aws_KEY}}"
+		    		sh "ansible-playbook deploy.yml --user ${aws_USERNAME} --private-key ${aws_KEY}}"
 
 		    			// img_TAG=${img_TAG} \
 		    			// img_NAME=${img_NAME} \
