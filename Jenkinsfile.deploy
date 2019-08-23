@@ -63,7 +63,7 @@ pipeline {
 					// remote_user=${aws_USERNAME}}"'''
 
 			  		// sh "ssh -o StrictHostKeyChecking=no -T -i ${aws_KEY} ${aws_USERNAME}@34.208.41.167"
-			  		sh "aws_USER=${aws_USERNAME} aws_SSH_KEY=${aws_KEY}"
+			  		aws_USER=${aws_USERNAME} aws_SSH_KEY=${aws_KEY}
 			  		sh "echo ${aws_USER} > ./crds/aws_user"
 					sh "echo ${aws_SSH_KEY} > ./crds/key"
 		    		// sh 'ansible-playbook deploy.yml --extra-vars \"{aws_USER=${aws_USERNAME} aws_SSH_KEY=${aws_KEY}}\"'
