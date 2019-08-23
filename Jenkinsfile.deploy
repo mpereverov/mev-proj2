@@ -30,20 +30,20 @@ properties([
 			name: 'img_TAG',
 			trim: true
 		),
-		credentials(
-			credentialType: 'com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey', 
-			defaultValue: 'aws_id_key', 
-			description: '', 
-			name: 'aws_id_key', 
-			required: true
-			),
-		credentials(
-			credentialType: 'com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl', 
-			defaultValue: 'dockeruser', 
-			description: '', 
-			name: 'dockeruser', 
-			required: true
-			)
+		// credentials(
+		// 	credentialType: 'com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey', 
+		// 	defaultValue: 'aws_id_key', 
+		// 	description: '', 
+		// 	name: 'aws_id_key', 
+		// 	required: true
+		// 	),
+		// credentials(
+		// 	credentialType: 'com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl', 
+		// 	defaultValue: 'dockeruser', 
+		// 	description: '', 
+		// 	name: 'dockeruser', 
+		// 	required: true
+		// 	)
 	])
 ])
 
@@ -76,8 +76,8 @@ pipeline {
 
 			  		// sh "ssh -o StrictHostKeyChecking=no -T -i ${aws_KEY} ${aws_USERNAME}@34.208.41.167"
 			  		sh "aws_USER=${aws_USERNAME} aws_SSH_KEY=${aws_KEY}"
-			  		sh "echo ${aws_USERNAME} > ./crds/aws_user"
-					sh "echo ${aws_KEY} > ./crds/key"
+			  		sh "echo ${aws_USERNAME} > ./crds/aws"
+					sh "echo ${aws_KEY} >> ./crds/aws"
 		    		// sh 'ansible-playbook deploy.yml --extra-vars \"{aws_USER=${aws_USERNAME} aws_SSH_KEY=${aws_KEY}}\"'
 
 		    			// img_TAG=${img_TAG} \
@@ -101,8 +101,9 @@ pipeline {
 // "remote_user":"ubuntu"}"'
     			}
 
-	    		sh "cat ./crds/aws_user"
-	    		sh "cat ./crds/key"
+	    		sh "cat ./crds/aws"
+	    		// sh ""
+	    		// sh "cat ./crds/key"
 
 // 	    		sh "ansible-playbook deploy.yml --extra-vars \\\'{\
 // "component_NAME":"${params.component_NAME}", \
