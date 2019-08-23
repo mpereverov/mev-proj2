@@ -17,6 +17,7 @@
     path: "{{ component_DIR }}"
     state: directory
     recurse: yes
+  tags: create_dir
 
 - name: Generate docker-compose file
   template:
