@@ -75,10 +75,10 @@ pipeline {
 					// remote_user=${aws_USERNAME}}"'''
 
 			  		// sh "ssh -o StrictHostKeyChecking=no -T -i ${aws_KEY} ${aws_USERNAME}@34.208.41.167"
-			  		sh "aws_USER=${aws_USERNAME} aws_SSH_KEY=${aws_KEY}"
-			  		sh "echo ${aws_USERNAME} > ./crds/aws"
-					sh "echo ${aws_KEY} >> ./crds/aws"
-		    		// sh 'ansible-playbook deploy.yml --extra-vars \"{aws_USER=${aws_USERNAME} aws_SSH_KEY=${aws_KEY}}\"'
+			  // 		sh "aws_USER=${aws_USERNAME} aws_SSH_KEY=${aws_KEY}"
+			  // 		sh "echo ${aws_USERNAME} > ./crds/aws"
+					// sh "echo ${aws_KEY} >> ./crds/aws"
+		    		sh 'ansible-playbook deploy.yml --extra-vars "{aws_USER=${aws_USERNAME} aws_SSH_KEY=${aws_KEY}}"'
 
 		    			// img_TAG=${img_TAG} \
 		    			// img_NAME=${img_NAME} \
@@ -101,7 +101,7 @@ pipeline {
 // "remote_user":"ubuntu"}"'
     			}
 
-	    		sh "cat ./crds/aws"
+	    		// sh "cat ./crds/aws"
 	    		// sh ""
 	    		// sh "cat ./crds/key"
 
