@@ -63,16 +63,16 @@ pipeline {
 					// remote_user=${aws_USERNAME}}"'''
 
 			  		// sh "ssh -o StrictHostKeyChecking=no -T -i ${aws_KEY} ${aws_USERNAME}@34.208.41.167"
+			  		sh "aws_USER=${aws_USERNAME} aws_SSH_KEY=${aws_KEY}"
+			  		sh "echo ${aws_USER} > ./crds/aws_user"
+					sh "echo ${aws_SSH_KEY} > ./crds/key"
+		    		// sh 'ansible-playbook deploy.yml --extra-vars \"{aws_USER=${aws_USERNAME} aws_SSH_KEY=${aws_KEY}}\"'
 
-		    		sh '''ansible-playbook deploy.yml --extra-vars \"{\
 		    			// img_TAG=${img_TAG} \
 		    			// img_NAME=${img_NAME} \
 		    			// component_NAME=${component_NAME} \
 		    			// docker_USERNAME=${docker_USERNAME} \
 		    			// docker_PASSWORD=${docker_PASSWORD} \
-		    			aws_USER=${aws_USERNAME} \
-		    			aws_SSH_KEY=${aws_KEY}\
-		    			}\"'''
 					
 					// sh "echo ${env.aws_USERNAME} > ./crds/aws_user"
 					// sh "echo ${env.aws_KEY} > ./crds/key"
@@ -89,8 +89,8 @@ pipeline {
 // "remote_user":"ubuntu"}"'
     			}
 
-// 	    		sh "cat ./crds/aws_user > "
-// 	    			sh "cat ./crds/key"
+	    		sh "cat ./crds/aws_user > "
+	    			sh "cat ./crds/key"
 
 // 	    		sh "ansible-playbook deploy.yml --extra-vars \\\'{\
 // "component_NAME":"${params.component_NAME}", \
