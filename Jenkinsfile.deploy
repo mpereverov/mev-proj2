@@ -12,18 +12,18 @@ properties([
 			name: 'img_NAME',
 			trim: true
 		),
-		string(
-			defaultValue: '',
-			description:'',
-			name: 'aws_USER',
-			trim: true
-		),
-		string(
-			defaultValue: '',
-			description:'',
-			name: 'aws_SSH_KEY',
-			trim: true
-		),
+		// string(
+		// 	defaultValue: '',
+		// 	description:'',
+		// 	name: 'aws_USER',
+		// 	trim: true
+		// ),
+		// string(
+		// 	defaultValue: '',
+		// 	description:'',
+		// 	name: 'aws_SSH_KEY',
+		// 	trim: true
+		// ),
 		string(
 			defaultValue: '92',
 			description:'',
