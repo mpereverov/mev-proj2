@@ -2,6 +2,7 @@
 
 - name: APP Deploy
   hosts: app_server
+  become: yes
   become_user: "{{ user }}"
   roles: 
     - deploy
