@@ -54,14 +54,14 @@ pipeline {
 				]) 
 				{
 
-sh label: '', script: """ansible-playbook deploy.yml --extra-vars \"{\
+sh label: '', script: "ansible-playbook deploy.yml --extra-vars \"{\
 img_NAME="${img_NAME}" \
 img_TAG="${img_TAG}" \
 component_NAME="${component_NAME}" \
 docker_USERNAME="${docker_USERNAME}" \
 docker_PASSWORD="${docker_PASSWORD}" \
 AWS_KEY=${aws_KEY} \
-AWS_USERNAME=${aws_USERNAME}}\""""
+AWS_USERNAME=${aws_USERNAME}}\""
 
 			  		// sh "ssh -o StrictHostKeyChecking=no -T -i ${aws_KEY} ${aws_USERNAME}@34.208.41.167"
 
