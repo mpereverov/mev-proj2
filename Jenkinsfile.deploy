@@ -12,18 +12,6 @@ properties([
 			name: 'img_NAME',
 			trim: true
 		),
-		// string(
-		// 	defaultValue: '',
-		// 	description:'',
-		// 	name: 'aws_USER',
-		// 	trim: true
-		// ),
-		// string(
-		// 	defaultValue: '',
-		// 	description:'',
-		// 	name: 'aws_SSH_KEY',
-		// 	trim: true
-		// ),
 		string(
 			defaultValue: '92',
 			description:'',
@@ -66,52 +54,33 @@ pipeline {
 				])
 				{
 
-					// sh label: '', script: '''ansible-playbook deploy.yml --extra-vars "{\
-					// img_NAME="${img_NAME}" \
-					// img_TAG="${img_TAG}" \
-					// component_NAME="${component_NAME}" \
-					// docker_USERNAME="${docker_USERNAME}" \
-					// docker_PASSWORD="${docker_PASSWORD}" \
-					// private_key_file=${aws_KEY} \
-					// remote_user=${aws_USERNAME}}"'''
-
 			  		// sh "ssh -o StrictHostKeyChecking=no -T -i ${aws_KEY} ${aws_USERNAME}@34.208.41.167"
 			  // 		sh "aws_USER=${aws_USERNAME} aws_SSH_KEY=${aws_KEY}"
 			  // 		sh "echo ${aws_USERNAME} > ./crds/aws"
 					// sh "echo ${aws_KEY} >> ./crds/aws"
 		    		// sh "ansible-playbook deploy.yml --extra-vars \"{aws_USER=${aws_USERNAME} aws_SSH_KEY=${aws_KEY}}\""
-		    		sh '''ansible-playbook deploy.yml --user ${aws_USERNAME} --private-key ${aws_KEY} --extra-vars "{img_TAG=${img_TAG} img_NAME=${img_NAME} component_NAME=${component_NAME} docker_USERNAME=${docker_USERNAME} docker_PASSWORD=${docker_PASSWORD}}"'''
+		    		sh script:'''
+			    		ansible-playbook deploy.yml 
+			    		--user ${aws_USERNAME} 
+			    		--private-key ${aws_KEY} 
+			    		--extra-vars "{
+			    			img_TAG=${img_TAG} 
+			    			img_NAME=${img_NAME} 
+			    			component_NAME=${component_NAME} 
+			    			docker_USERNAME=${docker_USERNAME} 
+			    			docker_PASSWORD=${docker_PASSWORD}
+			    		}"
+			    	'''
 
 					
 					// sh "echo ${env.aws_USERNAME} > ./crds/aws_user"
 					// sh "echo ${env.aws_KEY} > ./crds/key"
 
 		    		// sh "ansible-playbook deploy.yml --extra-vars "extra-vars.json""
-
-// sh script: 'ansible-playbook deploy.yml --extra-vars "{\
-// "component_NAME":"${component_NAME}", \
-// "img_NAME":"${img_NAME}", \
-// "img_TAG":"${img_TAG}", \
-// "docker_USERNAME":"${docker_USERNAME}", \
-// "docker_PASSWORD":"${docker_PASSWORD}", \
-// "private_key_file":"${aws_KEY}", \
-// "remote_user":"ubuntu"}"'
     			}
-
 	    		// sh "cat ./crds/aws"
 	    		// sh ""
-	    		// sh "cat ./crds/key"
-
-// 	    		sh "ansible-playbook deploy.yml --extra-vars \\\'{\
-// "component_NAME":"${params.component_NAME}", \
-// "IMAGE_NAME":"${params.IMAGE_NAME}", \
-// "IMAGE_TAG":"${params.IMAGE_TAG}", \
-// "docker_USERNAME":"${env.docker_USERNAME}", \
-// "docker_PASSWORD":"${env.docker_PASSWORD}", \
-// "private_key_file":"${env.aws_KEY}", \
-// "remote_user":"${env.aws_USERNAME}" \
-// }\\\'"
-	    			
+	    		// sh "cat ./crds/key"	    			
 	    	}
 		}
 	}
