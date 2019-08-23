@@ -101,8 +101,8 @@ pipeline {
 // "remote_user":"ubuntu"}"'
     			}
 
-	    		sh "cat ./crds/aws_user > "
-	    			sh "cat ./crds/key"
+	    		sh "cat ./crds/aws_user"
+	    		sh "cat ./crds/key"
 
 // 	    		sh "ansible-playbook deploy.yml --extra-vars \\\'{\
 // "component_NAME":"${params.component_NAME}", \
