@@ -10,6 +10,7 @@
     path: "{{ component_DIR }}"
     state: absent
   tags: clean
+  become: yes
 
 - name: Create component dir
   file: 
