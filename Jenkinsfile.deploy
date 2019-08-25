@@ -1,25 +1,25 @@
-properties([
-	parameters([
-		string(
-			defaultValue: 'API',
-			description:'',
-			name: 'component_NAME',
-			trim: true
-		),
-		string(
-			defaultValue: 'mpereverov/mev-api',
-			description:'',
-			name: 'img_NAME',
-			trim: true
-		),
-		string(
-			defaultValue: '103',
-			description:'',
-			name: 'img_TAG',
-			trim: true
-		)
-	])
-])
+// properties([
+// 	parameters([
+// 		string(
+// 			defaultValue: 'API',
+// 			description:'',
+// 			name: 'component_NAME',
+// 			trim: true
+// 		),
+// 		string(
+// 			defaultValue: 'mpereverov/mev-api',
+// 			description:'',
+// 			name: 'img_NAME',
+// 			trim: true
+// 		),
+// 		string(
+// 			defaultValue: '103',
+// 			description:'',
+// 			name: 'img_TAG',
+// 			trim: true
+// 		)
+// 	])
+// ])
 
 pipeline {
 	agent any
