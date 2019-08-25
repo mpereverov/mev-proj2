@@ -1,2 +1,2 @@
 project_NAME: app
-component_DIR: ~/API
+component_DIR: ~/{{ component_NAME }}
