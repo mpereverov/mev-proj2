@@ -7,3 +7,6 @@ user: operator
 docker_USERNAME: 
 docker_PASSWORD: 
 component_NAME: 
+img_NAME: 
+img_TAG: 
+
