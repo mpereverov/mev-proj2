@@ -6,6 +6,6 @@ user: operator
 # ansible_ssh_private_key_file: 
 docker_USERNAME: 
 docker_PASSWORD: 
-comp_NAME: 
+component_NAME: 
 img_NAME: 
 img_TAG: 
