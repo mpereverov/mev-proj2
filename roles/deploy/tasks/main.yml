@@ -6,9 +6,9 @@
     password: "{{ docker_PASSWORD }}"
 
 - name: show extra-vars
-  command: echo "{{img_NAME}} {{img_TAG}} {{ component_NAME }} {{docker_USERNAME}}"
+  command: echo "{{img_NAME}}, {{img_TAG}}, {{ component_NAME }}, {{docker_USERNAME}}"
   tags: showvars
-  
+
 - name: Create component dir
   file: 
     path: "{{ component_DIR }}"
