@@ -13,7 +13,7 @@ properties([
 			trim: true
 		),
 		string(
-			defaultValue: '92',
+			defaultValue: '94',
 			description:'',
 			name: 'img_TAG',
 			trim: true
