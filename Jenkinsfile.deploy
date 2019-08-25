@@ -1,39 +1,25 @@
-properties([
-	parameters([
-		string(
-			defaultValue: 'API',
-			description:'',
-			name: 'component_NAME',
-			trim: true
-		),
-		string(
-			defaultValue: 'mpereverov/mev-api',
-			description:'',
-			name: 'img_NAME',
-			trim: true
-		),
-		string(
-			defaultValue: '92',
-			description:'',
-			name: 'img_TAG',
-			trim: true
-		),
-		// credentials(
-		// 	credentialType: 'com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey', 
-		// 	defaultValue: 'aws_id_key', 
-		// 	description: '', 
-		// 	name: 'aws_id_key', 
-		// 	required: true
-		// 	),
-		// credentials(
-		// 	credentialType: 'com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl', 
-		// 	defaultValue: 'dockeruser', 
-		// 	description: '', 
-		// 	name: 'dockeruser', 
-		// 	required: true
-		// 	)
-	])
-])
+// properties([
+// 	parameters([
+// 		string(
+// 			defaultValue: 'API',
+// 			description:'',
+// 			name: 'component_NAME',
+// 			trim: true
+// 		),
+// 		string(
+// 			defaultValue: 'mpereverov/mev-api',
+// 			description:'',
+// 			name: 'img_NAME',
+// 			trim: true
+// 		),
+// 		string(
+// 			defaultValue: '92',
+// 			description:'',
+// 			name: 'img_TAG',
+// 			trim: true
+// 		),
+// 	])
+// ])
 
 pipeline {
 	agent any
@@ -53,19 +39,13 @@ pipeline {
 					)
 				])
 				{
-
 			  		// sh "ssh -o StrictHostKeyChecking=no -T -i ${aws_KEY} ${aws_USERNAME}@34.208.41.167"
 			  // 		sh "aws_USER=${aws_USERNAME} aws_SSH_KEY=${aws_KEY}"
 			  // 		sh "echo ${aws_USERNAME} > ./crds/aws"
 					// sh "echo ${aws_KEY} >> ./crds/aws"
-		    		// sh "ansible-playbook deploy.yml --extra-vars \"{aws_USER=${aws_USERNAME} aws_SSH_KEY=${aws_KEY}}\""
-		    		sh '''ansible-playbook deploy.yml -vvv -t create_dir --user ${aws_USERNAME} --private-key ${aws_KEY} --extra-vars "{img_TAG=${img_TAG} img_NAME=${img_NAME} component_NAME=${component_NAME} docker_USERNAME=${docker_USERNAME} docker_PASSWORD=${docker_PASSWORD}}"'''
-
-					
+		    		sh '''ansible-playbook deploy.yml -vvv -t create_dir --user ${aws_USERNAME} --private-key ${aws_KEY} --extra-vars "{component_NAME=${component_NAME} img_NAME=${img_NAME} img_TAG=${img_TAG} docker_USERNAME=${docker_USERNAME} docker_PASSWORD=${docker_PASSWORD}}"'''					
 					// sh "echo ${env.aws_USERNAME} > ./crds/aws_user"
 					// sh "echo ${env.aws_KEY} > ./crds/key"
-
-		    		// sh "ansible-playbook deploy.yml --extra-vars "extra-vars.json""
     			}
 	    		// sh "cat ./crds/aws"
 	    		// sh ""
