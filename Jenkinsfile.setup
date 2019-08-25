@@ -10,7 +10,7 @@ pipeline {
 						usernameVariable: 'aws_USERNAME'
 					)
 				]){
-					sh "ansible-playbook setup.yml -user ${aws_USERNAME} --private-key ${aws_KEY}"
+					sh "ansible-playbook setup.yml --user ${aws_USERNAME} --private-key ${aws_KEY}"
 				}
 			}
 		}
