@@ -17,6 +17,10 @@
     src: docker-compose.yml
     dest: "{{ component_DIR }}/docker-compose.yml"
 
+- name: Stop Docker container
+  command: docker container stop "{{ container_NAME }}"
+tags: cont_stop
+
 - name: Run Docker container with chosen component
   docker_compose:
     project_src: "{{ component_DIR }}"
