@@ -5,10 +5,6 @@
     username: "{{ docker_USERNAME }}"
     password: "{{ docker_PASSWORD }}"
 
-- name: show extra-vars
-  command: echo "{{img_NAME}}, {{img_TAG}}, {{ component_NAME }}, {{docker_USERNAME}}"
-  tags: showvars
-
 - name: Create component dir
   file: 
     path: "{{ component_DIR }}"
@@ -26,6 +22,7 @@
     project_src: "{{ component_DIR }}"
     project_name: "{{ project_NAME }}"
     services: "{{ component_NAME }}"
+    recreate: always
     restarted: yes
     pull: yes
   tags: run_cont
