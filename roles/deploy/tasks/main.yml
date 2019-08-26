@@ -12,9 +12,11 @@
     recurse: yes
   tags: create_dir
 
-- name: Stop Docker container
-  command: docker container stop "{{ component_NAME }}"
-  tags: cont_stop
+- name: Remove Docker container
+  docker-container:
+  name: "{{ component_NAME }}"
+  state: absent
+  tags: rm_cont
 
 - name: Run Docker container with chosen component
   docker_compose:
