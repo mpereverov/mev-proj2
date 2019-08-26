@@ -17,7 +17,7 @@
   template: 
     src: "{{ site_conf }}"
     dest: /etc/nginx/sites-available/{{ site_conf }}
-  notify: restartnginx
+  notify: restart nginx
   tags: nginx_conf
 
 - name: Enable site
