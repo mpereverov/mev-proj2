@@ -16,6 +16,7 @@
   template:
     src: docker-compose.yml
     dest: "{{ component_DIR }}/docker-compose.yml"
+  tags: gen_comp
 
 - name: Remove Docker container
   docker_container:
