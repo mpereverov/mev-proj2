@@ -1,19 +1,19 @@
 properties([
 	parameters([
 		string(
-			defaultValue: 'API/SPA',
+			defaultValue: 'API',
 			description:'',
 			name: 'component_NAME',
 			trim: true
 		),
 		string(
-			defaultValue: 'user/repo',
+			defaultValue: 'mpereverov/mev-api',
 			description:'',
 			name: 'img_NAME',
 			trim: true
 		),
 		string(
-			defaultValue: 'tag',
+			defaultValue: '104',
 			description:'',
 			name: 'img_TAG',
 			trim: true
