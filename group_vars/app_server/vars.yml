@@ -9,4 +9,3 @@ docker_PASSWORD:
 component_NAME: 
 img_NAME: 
 img_TAG: 
-container_NAME: "{{ component_NAME }}"
