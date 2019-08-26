@@ -13,7 +13,7 @@
   tags: create_dir
 
 - name: Stop Docker container
-  command: docker container stop "{{ container_NAME }}"
+  command: docker container stop "{{ component_NAME }}"
 tags: cont_stop
 
 - name: Run Docker container with chosen component
