@@ -14,8 +14,8 @@
 
 - name: Remove Docker container
   docker_container:
-  name: "{{ component_NAME }}"
-  state: absent
+    name: "{{ component_NAME }}"
+    state: absent
   tags: rm_cont
 
 - name: Run Docker container with chosen component
