@@ -13,7 +13,7 @@
   tags: create_dir
 
 - name: Remove Docker container
-  docker-container:
+  docker_container:
   name: "{{ component_NAME }}"
   state: absent
   tags: rm_cont
