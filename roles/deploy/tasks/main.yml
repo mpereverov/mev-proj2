@@ -5,6 +5,12 @@
     username: "{{ docker_USERNAME }}"
     password: "{{ docker_PASSWORD }}"
 
+- name: Start service nginx, if not started
+  service:
+    name: nginx
+    enabled: yes
+    state: started
+
 - name: Create component dir
   file: 
     path: "{{ component_DIR }}"
