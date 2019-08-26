@@ -22,7 +22,7 @@
 // ])
 
 pipeline {
-	agent local
+	agent any
 	stages {
 		stage ('Deploy') {
 			steps {
