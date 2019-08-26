@@ -12,6 +12,11 @@
     recurse: yes
   tags: create_dir
 
+- name: Generate docker-compose file
+  template:
+    src: docker-compose.yml
+    dest: "{{ component_DIR }}/docker-compose.yml"
+
 - name: Remove Docker container
   docker_container:
     name: "{{ component_NAME }}"
