@@ -1,25 +1,25 @@
-// properties([
-// 	parameters([
-// 		string(
-// 			defaultValue: 'API',
-// 			description:'',
-// 			name: 'component_NAME',
-// 			trim: true
-// 		),
-// 		string(
-// 			defaultValue: 'mpereverov/mev-api',
-// 			description:'',
-// 			name: 'img_NAME',
-// 			trim: true
-// 		),
-// 		string(
-// 			defaultValue: '103',
-// 			description:'',
-// 			name: 'img_TAG',
-// 			trim: true
-// 		)
-// 	])
-// ])
+properties([
+	parameters([
+		string(
+			defaultValue: 'API/SPA',
+			description:'',
+			name: 'component_NAME',
+			trim: true
+		),
+		string(
+			defaultValue: 'user/repo',
+			description:'',
+			name: 'img_NAME',
+			trim: true
+		),
+		string(
+			defaultValue: 'tag',
+			description:'',
+			name: 'img_TAG',
+			trim: true
+		)
+	])
+])
 
 pipeline {
 	agent any
@@ -41,7 +41,7 @@ pipeline {
 				{
 			  		// sh "ssh -o StrictHostKeyChecking=no -T -i ${aws_KEY} ${aws_USERNAME}@34.208.41.167"
 		    		sh script: '''
-		    		ansible-playbook deploy.yml -vvv --user ${aws_USERNAME} --private-key ${aws_KEY} --extra-vars "img_NAME=${img_NAME} component_NAME=${component_NAME} img_TAG=${img_TAG} docker_USERNAME=${docker_USERNAME} docker_PASSWORD=${docker_PASSWORD}"
+		    		ansible-playbook deploy.yml -vvv --user ${aws_USERNAME} --private-key ${aws_KEY} --extra-vars "{img_NAME=${img_NAME} component_NAME=${component_NAME} img_TAG=${img_TAG} docker_USERNAME=${docker_USERNAME} docker_PASSWORD=${docker_PASSWORD}}"
 		    		'''					
     			}
 	    		// sh "cat ./crds/aws"
