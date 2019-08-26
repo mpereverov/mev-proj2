@@ -4,13 +4,13 @@ version: "3.7"
 
 services:
 
-  API:
+  "{{ component_NAME }}":
     image: "{{ img_NAME }}:{{ img_TAG }}"
     container_name: api
     ports: 
       - "4004:4004"
 
-  SPA:
+  "{{ component_NAME }}":
     image: "{{ img_NAME }}:{{ img_TAG }}"
     container_name: spa
     ports: 

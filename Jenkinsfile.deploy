@@ -40,7 +40,7 @@ pipeline {
 				])
 				{
 			  		// sh "ssh -o StrictHostKeyChecking=no -T -i ${aws_KEY} ${aws_USERNAME}@34.208.41.167"
-		    		sh script: '''ansible-playbook deploy.yml -vvv --user ${aws_USERNAME} --private-key ${aws_KEY} --extra-vars "img_NAME=${img_NAME} component_NAME=${component_NAME} img_TAG=${img_TAG} docker_USERNAME=${docker_USERNAME} docker_PASSWORD=${docker_PASSWORD}"'''					
+		    		sh script: '''ansible-playbook deploy.yml -vvv --user ${aws_USERNAME} --private-key ${aws_KEY} --extra-vars "img_NAME=${img_NAME} component_NAME=${component_NAME} img_TAG=${img_TAG} docker_USERNAME=${docker_USERNAME} docker_PASSWORD=${docker_PASSWORD}" -t run_cont'''					
     			}
 	    	}
 		}
