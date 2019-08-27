@@ -1,0 +1,21 @@
+---
+
+- name: apply common configuration. Add user, install neccessary apps
+  hosts: app_server
+  roles: 
+    - common
+
+- name: Docker-CE install
+  hosts: app_server
+  roles: 
+    - docker-ce
+
+- name: Docker-compose install
+  hosts: app_server
+  roles: 
+    - docker-compose
+
+- name: Nginx install
+  hosts: app_server
+  roles:
+    - nginx

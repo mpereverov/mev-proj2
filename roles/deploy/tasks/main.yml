@@ -1,0 +1,41 @@
+---
+
+- name: Log into DockerHub
+  docker_login:
+    username: "{{ docker_USERNAME }}"
+    password: "{{ docker_PASSWORD }}"
+
+- name: Start service nginx, if not started
+  service:
+    name: nginx
+    enabled: yes
+    state: started
+
+- name: Create component dir
+  file: 
+    path: "{{ component_DIR }}"
+    state: directory
+    recurse: yes
+  tags: create_dir
+
+- name: Generate docker-compose file
+  template:
+    src: docker-compose.yml
+    dest: "{{ component_DIR }}/docker-compose.yml"
+  tags: gen_comp
+
+- name: Remove Docker container
+  docker_container:
+    name: "{{ component_NAME }}"
+    state: absent
+  tags: rm_cont
+
+- name: Run Docker container with chosen component
+  docker_compose:
+    project_src: "{{ component_DIR }}"
+    project_name: "{{ project_NAME }}"
+    services: "{{ component_NAME }}"
+    recreate: always
+    restarted: yes
+    pull: yes
+  tags: run_cont

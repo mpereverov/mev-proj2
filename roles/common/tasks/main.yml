@@ -1,0 +1,22 @@
+---
+
+  # - name: Set authorized key taken from file
+  #   authorized_key:
+  #     user: "{{ remote_user }}"
+  #     state: present
+  #     key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+
+  # - name: Install prerequisites
+  #   apt: 
+  #     name: "{{ item }}"
+  #   with_items:
+  #     - sshpass
+  #     - udo
+  #   # state: latest
+
+- name: Add user
+  user:
+    name: "{{ user }}"
+    # groups: 
+    state: present
+    generate_ssh_key: yes

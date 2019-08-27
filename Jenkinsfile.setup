@@ -1,0 +1,18 @@
+pipeline {
+	agent any
+	stages {
+		stage ('Setup') {
+			steps {
+				withCredentials([
+					sshUserPrivateKey(
+						credentialsId: 'aws_id_key', 
+						keyFileVariable: 'aws_KEY', 
+						usernameVariable: 'aws_USERNAME'
+					)
+				]){
+					sh "ansible-playbook setup.yml --user ${aws_USERNAME} --private-key ${aws_KEY}"
+				}
+			}
+		}
+	}
+}
